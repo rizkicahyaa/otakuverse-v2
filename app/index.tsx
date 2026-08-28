@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
     return (
@@ -6,7 +6,7 @@ export default function Index() {
             <View style={styles.header}>
                 <View>
                     <Text style={styles.greeting}>Welcome!</Text>
-                    <Text style={styles.logo}>OtakuVerse</Text>
+                    <Text style={styles.logo}>Otakuverse</Text>
                 </View>
             </View>
 
@@ -38,10 +38,10 @@ export default function Index() {
             </View>
 
             <View style={styles.animeList}>
-                <AnimeCard title="Demon Slayer" genre="Action, Historical, Shounen" rating="9.1" image="⚔️" />
-                <AnimeCard title="Haikyuu!!" genre="Sport, Comedy, Shounen" rating="9.0" image="🏴‍☠️" />
-                <AnimeCard title="Angel Beats!" genre="Drama, Fantasy" rating="8.8" image="👹" />
-                <AnimeCard title="Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai" genre="Drama, Romance, Supernatural" rating="8.8" image="👹" />
+                <AnimeCard title="Demon Slayer" genre="Action, Historical, Shounen" rating="9.1" image="https://cdn.myanimelist.net/images/anime/1286/99889.jpg" />
+                <AnimeCard title="Haikyuu!!" genre="Sport, Comedy, Shounen" rating="9.0" image="https://cdn.myanimelist.net/images/anime/7/76014.jpg" />
+                <AnimeCard title="Angel Beats!" genre="Drama, Fantasy" rating="8.8" image="https://cdn.myanimelist.net/images/anime/1244/111115.jpg" />
+                <AnimeCard title="Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai" genre="Drama, Romance, Supernatural" rating="8.8" image="https://cdn.myanimelist.net/images/anime/1301/93586.jpg" />
             </View>
         </ScrollView>
     );
@@ -58,7 +58,7 @@ function AnimeCard({ title, genre, rating, image }: AnimeCardProps) {
     return (
         <Pressable style={styles.animeCard}>
             <View style={styles.animeImage}>
-                <Text style={styles.animeImage}>{image}</Text>
+                <Image source={{ uri: image }} style={styles.animeImage} resizeMode="cover" />
             </View>
 
             <View style={styles.animeInfo}>
