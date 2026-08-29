@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
 import { colors } from "@/constants/theme";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function HomeHeader() {
     return (
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         color: colors.textSecondary,
         fontSize: 14,
         marginBottom: 4,
+        marginTop: 20,
     },
 
     logo: {
