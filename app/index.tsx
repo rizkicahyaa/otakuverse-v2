@@ -1,10 +1,10 @@
-import { ScrollView, StyleSheet, View } from "react-native";
-import { useState } from "react";
-import { colors } from "@/constants/theme";
 import AnimeCard from "@/components/AnimeCard";
 import CategoryFilter from "@/components/CategoryFilter";
 import HomeHeader from "@/components/HomeHeader";
 import SectionHeader from "@/components/SectionHeader";
+import { colors } from "@/constants/theme";
+import { useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 
 const CATEGORIES = ["All", "Anime", "Games", "Characters", "Voice Actors"];
 
@@ -45,28 +45,28 @@ const GAMES_LIST = [
         title: "Genshin Impact",
         genre: "RPG, Open World, Gacha",
         rating: "9.0",
-        image: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Genshin_Impact_cover_art.jpg/220px-Genshin_Impact_cover_art.jpg",
+        image: "https://cdn1.epicgames.com/spt-assets/99dc46c68ea14324964a856d18dcac5b/genshin-impact-hqdph.jpg",
     },
     {
         id: "g2",
-        title: "Blue Archive",
-        genre: "RPG, Strategy, Gacha",
+        title: "Umamusume: Pretty Derby",
+        genre: "RPG, Racing, Sport",
         rating: "8.7",
-        image: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/Blue_Archive_game_logo.png/220px-Blue_Archive_game_logo.png",
+        image: "https://static.wikia.nocookie.net/umamusume/images/8/88/Uma_Musume_Pretty_Derby_Title_Screen.jpg/revision/latest/thumbnail/width/360/height/360?cb=20210225061449",
     },
     {
         id: "g3",
         title: "Honkai: Star Rail",
         genre: "Turn-Based RPG, Gacha",
         rating: "8.9",
-        image: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/Honkai_Star_Rail_game_cover.jpg/220px-Honkai_Star_Rail_game_cover.jpg",
+        image: "https://m.media-amazon.com/images/M/MV5BNTZhOTAzNWMtNzE5NS00MzRlLWE4ZjItNzM3N2JlMDA5MTczXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     },
     {
         id: "g4",
-        title: "Sword Art Online: Alicization",
-        genre: "Action RPG, Anime",
+        title: "A Space For the Unbound",
+        genre: "Adventure, Puzzle, Indie",
         rating: "8.5",
-        image: "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Sword_Art_Online_Alicization_Lycoris.jpg/220px-Sword_Art_Online_Alicization_Lycoris.jpg",
+        image: "https://store-images.s-microsoft.com/image/apps.34505.14188977176880761.0222c884-9ed3-42db-a04e-0bbe476f4c9f.aac26568-94bc-4567-89b7-a6afbb8d8199",
     },
 ];
 
@@ -74,18 +74,10 @@ export default function Index() {
     const [activeCategory, setActiveCategory] = useState("All");
 
     return (
-        <ScrollView
-            style={styles.container}
-            contentContainerStyle={styles.content}
-            showsVerticalScrollIndicator={false}
-        >
+        <ScrollView style={styles.container} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
             <HomeHeader />
 
-            <CategoryFilter
-                categories={CATEGORIES}
-                activeCategory={activeCategory}
-                onSelect={setActiveCategory}
-            />
+            <CategoryFilter categories={CATEGORIES} activeCategory={activeCategory} onSelect={setActiveCategory} />
 
             <SectionHeader title="Anime" onSeeAll={() => {}} />
             <View style={styles.list}>
