@@ -73,25 +73,36 @@ const GAMES_LIST = [
 export default function Index() {
     const [activeCategory, setActiveCategory] = useState("All");
 
+    const showAnime = activeCategory === "All" || activeCategory === "Anime";
+    const showGames = activeCategory === "All" || activeCategory === "Games";
+
     return (
         <ScrollView style={styles.container} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
             <HomeHeader />
 
             <CategoryFilter categories={CATEGORIES} activeCategory={activeCategory} onSelect={setActiveCategory} />
 
-            <SectionHeader title="Anime" onSeeAll={() => {}} />
-            <View style={styles.list}>
-                {ANIME_LIST.map((item) => (
-                    <AnimeCard key={item.id} {...item} />
-                ))}
-            </View>
+            {showAnime && (
+                <>
+                    <SectionHeader title="Anime" onSeeAll={() => {}} />
+                    <View style={styles.list}>
+                        {ANIME_LIST.map((item) => (
+                            <AnimeCard key={item.id} {...item} />
+                        ))}
+                    </View>
+                </>
+            )}
 
-            <SectionHeader title="Games" onSeeAll={() => {}} />
-            <View style={styles.list}>
-                {GAMES_LIST.map((item) => (
-                    <AnimeCard key={item.id} {...item} />
-                ))}
-            </View>
+            {showGames && (
+                <>
+                    <SectionHeader title="Games" onSeeAll={() => {}} />
+                    <View style={styles.list}>
+                        {GAMES_LIST.map((item) => (
+                            <AnimeCard key={item.id} {...item} />
+                        ))}
+                    </View>
+                </>
+            )}
         </ScrollView>
     );
 }
