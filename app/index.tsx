@@ -70,11 +70,43 @@ const GAMES_LIST = [
     },
 ];
 
+const CHARACTERS_LIST = [
+    {
+        id: "c1",
+        title: "Shiina Mahiru",
+        genre: "Romance, School",
+        rating: "-",
+        image: "https://cdn.myanimelist.net/images/characters/3/624218.jpg",
+    },
+    {
+        id: "c2",
+        title: "Mejiro McQueen",
+        genre: "Sport, Racing",
+        rating: "-",
+        image: "https://cdn.myanimelist.net/images/characters/4/574456.jpg",
+    },
+    {
+        id: "c3",
+        title: "Mejiro Ardan",
+        genre: "Sport, Racing",
+        rating: "-",
+        image: "https://cdn.myanimelist.net/images/characters/6/577276.jpg",
+    },
+    {
+        id: "c4",
+        title: "Rei Ayanami",
+        genre: "Sci-Fi, Mecha, Adventure",
+        rating: "-",
+        image: "https://cdn.myanimelist.net/images/characters/11/314932.jpg",
+    },
+];
+
 export default function Index() {
     const [activeCategory, setActiveCategory] = useState("All");
 
     const showAnime = activeCategory === "All" || activeCategory === "Anime";
     const showGames = activeCategory === "All" || activeCategory === "Games";
+    const showCharacters = activeCategory === "All" || activeCategory === "Characters";
 
     return (
         <ScrollView style={styles.container} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -98,6 +130,17 @@ export default function Index() {
                     <SectionHeader title="Games" onSeeAll={() => {}} />
                     <View style={styles.list}>
                         {GAMES_LIST.map((item) => (
+                            <AnimeCard key={item.id} {...item} />
+                        ))}
+                    </View>
+                </>
+            )}
+
+            {showCharacters && (
+                <>
+                    <SectionHeader title="Characters" onSeeAll={() => {}} />
+                    <View style={styles.list}>
+                        {CHARACTERS_LIST.map((item) => (
                             <AnimeCard key={item.id} {...item} />
                         ))}
                     </View>
