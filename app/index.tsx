@@ -2,6 +2,8 @@ import AnimeCard from "@/components/AnimeCard";
 import CategoryFilter from "@/components/CategoryFilter";
 import HomeHeader from "@/components/HomeHeader";
 import SectionHeader from "@/components/SectionHeader";
+import VoiceActorsCard from "@/components/VoiceActorsCard";
+
 import { colors } from "@/constants/theme";
 import { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
@@ -101,12 +103,44 @@ const CHARACTERS_LIST = [
     },
 ];
 
+const VOICE_ACTORS_LIST = [
+    {
+        id: "v1",
+        name: "Ayana Taketatsu",
+        nationality: "Japanese",
+        role: "Voice Actress",
+        image: "https://cdn.myanimelist.net/r/140x220/images/voiceactors/2/86545.jpg?s=8e592b7bbad17ca11a785db15dd62ce4",
+    },
+    {
+        id: "v2",
+        name: "Kana Hanazawa",
+        nationality: "Japanese",
+        role: "Voice Actress",
+        image: "https://cdn.myanimelist.net/r/140x220/images/voiceactors/3/69318.jpg?s=cb66a62f32f59733b5e95de36d8e3dcf",
+    },
+    {
+        id: "v3",
+        name: "Minase Inori",
+        nationality: "Japanese",
+        role: "Voice Actress",
+        image: "https://cdn.myanimelist.net/r/140x220/images/voiceactors/2/74704.jpg?s=1394167ef5fb48a5bd07f1d5ef5e3dd9",
+    },
+    {
+        id: "v4",
+        name: "Oonishi Saori",
+        nationality: "Japanese",
+        role: "Voice Actress",
+        image: "https://cdn.myanimelist.net/r/140x220/images/voiceactors/3/63372.jpg?s=4e3ac4fe03444762700543027e79c90d",
+    },
+];
+
 export default function Index() {
     const [activeCategory, setActiveCategory] = useState("All");
 
     const showAnime = activeCategory === "All" || activeCategory === "Anime";
     const showGames = activeCategory === "All" || activeCategory === "Games";
     const showCharacters = activeCategory === "All" || activeCategory === "Characters";
+    const showVoiceActors = activeCategory === "All" || activeCategory === "Voice Actors";
 
     return (
         <ScrollView style={styles.container} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -142,6 +176,17 @@ export default function Index() {
                     <View style={styles.list}>
                         {CHARACTERS_LIST.map((item) => (
                             <AnimeCard key={item.id} {...item} />
+                        ))}
+                    </View>
+                </>
+            )}
+
+            {showVoiceActors && (
+                <>
+                    <SectionHeader title="Voice Actors" onSeeAll={() => {}} />
+                    <View style={styles.list}>
+                        {VOICE_ACTORS_LIST.map((item) => (
+                            <VoiceActorsCard key={item.id} {...item} />
                         ))}
                     </View>
                 </>
