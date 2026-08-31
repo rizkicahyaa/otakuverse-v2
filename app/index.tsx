@@ -132,15 +132,34 @@ const VOICE_ACTORS_LIST = [
         role: "Voice Actress",
         image: "https://cdn.myanimelist.net/r/140x220/images/voiceactors/3/63372.jpg?s=4e3ac4fe03444762700543027e79c90d",
     },
+    {
+        id: "v5",
+        name: "Itou Miku",
+        nationality: "Japanese",
+        role: "Voice Actress",
+        image: "https://cdn.myanimelist.net/r/140x220/images/voiceactors/2/78168.jpg?s=90893dd2a36293c3ab06ffa82dac024c",
+    },
+    {
+        id: "v6",
+        name: "Miyuki Sawashiro",
+        nationality: "Japanese",
+        role: "Voice Actress",
+        image: "https://cdn.myanimelist.net/r/140x220/images/voiceactors/2/65500.jpg?s=80c733f0aefed4b574d900e2a4a9037e",
+    },
 ];
+
+const PREVIEW_LIMIT = 5;
 
 export default function Index() {
     const [activeCategory, setActiveCategory] = useState("All");
 
-    const showAnime = activeCategory === "All" || activeCategory === "Anime";
-    const showGames = activeCategory === "All" || activeCategory === "Games";
-    const showCharacters = activeCategory === "All" || activeCategory === "Characters";
-    const showVoiceActors = activeCategory === "All" || activeCategory === "Voice Actors";
+    const isAll = activeCategory === "All";
+    const showAnime = isAll || activeCategory === "Anime";
+    const showGames = isAll || activeCategory === "Games";
+    const showCharacters = isAll || activeCategory === "Characters";
+    const showVoiceActors = isAll || activeCategory === "Voice Actors";
+
+    const slice = <T,>(list: T[]) => (isAll ? list.slice(0, PREVIEW_LIMIT) : list);
 
     return (
         <ScrollView style={styles.container} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -152,7 +171,7 @@ export default function Index() {
                 <>
                     <SectionHeader title="Anime" onSeeAll={() => {}} />
                     <View style={styles.list}>
-                        {ANIME_LIST.map((item) => (
+                        {slice(ANIME_LIST).map((item) => (
                             <AnimeCard key={item.id} {...item} />
                         ))}
                     </View>
@@ -163,7 +182,7 @@ export default function Index() {
                 <>
                     <SectionHeader title="Games" onSeeAll={() => {}} />
                     <View style={styles.list}>
-                        {GAMES_LIST.map((item) => (
+                        {slice(GAMES_LIST).map((item) => (
                             <AnimeCard key={item.id} {...item} />
                         ))}
                     </View>
@@ -174,7 +193,7 @@ export default function Index() {
                 <>
                     <SectionHeader title="Characters" onSeeAll={() => {}} />
                     <View style={styles.list}>
-                        {CHARACTERS_LIST.map((item) => (
+                        {slice(CHARACTERS_LIST).map((item) => (
                             <AnimeCard key={item.id} {...item} />
                         ))}
                     </View>
@@ -185,7 +204,7 @@ export default function Index() {
                 <>
                     <SectionHeader title="Voice Actors" onSeeAll={() => {}} />
                     <View style={styles.list}>
-                        {VOICE_ACTORS_LIST.map((item) => (
+                        {slice(VOICE_ACTORS_LIST).map((item) => (
                             <VoiceActorsCard key={item.id} {...item} />
                         ))}
                     </View>
